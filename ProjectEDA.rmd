@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 Exploring Quality of White Wine 
 ========================================================
 
@@ -72,7 +77,7 @@ Before plotting the data, we start with basic summaries
 of the dataset (after cleaning as we will explain shortly) 
 to be considered throughout this report. 
 
-```{r echo=FALSE, Univariate_Plots1}
+```{r echo=FALSE, warning=FALSE, Univariate_Plots1}
 # basic info of variables
 str(df_wine)
 # summary of the dataframe
@@ -122,7 +127,7 @@ are affected by the numerical ones (`fixed.acidity`,
 In this part, we provide histograms/bar plots for each feature to 
 visually see the distribution of it. 
 
-```{r echo=FALSE, fig.width=10, fig.height=4, Univariate_Plots2}
+```{r echo=FALSE, warning=FALSE, fig.width=10, fig.height=4, Univariate_Plots2}
 
 # barplot for `quality`
 p1 <- ggplot(data = df_wine, aes(x = quality)) + 
@@ -150,7 +155,7 @@ From these plots, we can see that the dataset contains only a small
 number of observations with very low (`quality` <= 4) 
 or very high quality (`quality` >= 8) compared to those in between. 
 
-```{r echo=FALSE, fig.width=10, fig.height=4, Univariate_Plots3}
+```{r echo=FALSE, warning=FALSE, fig.width=10, fig.height=4, Univariate_Plots3}
 # histogram for `fixed.acidity`
 
 # with all the observations
@@ -182,7 +187,7 @@ In the left plot, all the observations are used, while some outliers
 The distribution is close to the normal distribution but a little bit 
 right-skewed. 
 
-```{r echo=FALSE, fig.width=10, fig.height=4, Univariate_Plots4}
+```{r echo=FALSE, warning=FALSE, fig.width=10, fig.height=4, Univariate_Plots4}
 # histogram for `volatile.acidity`
 
 # with all the observations
@@ -212,7 +217,7 @@ The distribution is close to the normal distribution but
 right-skewed. 
 
 
-```{r echo=FALSE, fig.width=10, fig.height=4, Univariate_Plots5}
+```{r echo=FALSE, warning=FALSE, fig.width=10, fig.height=4, Univariate_Plots5}
 # histogram for `citric.acid`
 
 # with all the observations
@@ -242,7 +247,7 @@ The distribution is close to the normal distribution but a little bit
 right-skewed. We can also see two very localized peaks just below 
 `citric.acid` = 0.5, 0.75. 
 
-```{r echo=FALSE, fig.width=10, fig.height=8, Univariate_Plots6}
+```{r echo=FALSE, warning=FALSE, fig.width=10, fig.height=8, Univariate_Plots6}
 # histogram for `residual.sugar`
 
 # with all the observations
@@ -280,7 +285,7 @@ see a small peak around `residual.sugar` = 8. To see this more in detail,
 we set the x-axis to the log10 scale and plotted (all the observations used) 
 again (bottom-left plot). We can now see two peaks with similar heights. 
 
-```{r echo=FALSE, fig.width=10, fig.height=4, Univariate_Plots7}
+```{r echo=FALSE, warning=FALSE, fig.width=10, fig.height=4, Univariate_Plots7}
 # histogram for `chlorides`
 
 # with all the observations
@@ -308,7 +313,7 @@ In the left plot, all the observations are used, while some outliers
 (`chlorides` > 0.08) are removed in the right plot. 
 The distribution is close to the normal distribution. 
 
-```{r echo=FALSE, fig.width=10, fig.height=4, Univariate_Plots8}
+```{r echo=FALSE, warning=FALSE, fig.width=10, fig.height=4, Univariate_Plots8}
 # histogram for `free.sulfur.dioxide`
 
 # with all the observations
@@ -337,7 +342,7 @@ In the left plot, all the observations are used, while some outliers
 The distribution is close to the normal distribution but a little bit 
 right-skewed. 
 
-```{r echo=FALSE, fig.width=10, fig.height=4, Univariate_Plots9}
+```{r echo=FALSE, warning=FALSE, fig.width=10, fig.height=4, Univariate_Plots9}
 # histogram for `total.sulfur.dioxide`
 
 # with all the observations
@@ -366,7 +371,7 @@ In the left plot, all the observations are used, while some outliers
 The distribution is close to the normal distribution but a little bit 
 right-skewed. 
 
-```{r echo=FALSE, fig.width=10, fig.height=4, Univariate_Plots10}
+```{r echo=FALSE, warning=FALSE, fig.width=10, fig.height=4, Univariate_Plots10}
 # histogram for `density`
 
 # with all the observations
@@ -396,7 +401,7 @@ In the left plot, all the observations are used, while some outliers
 The distribution is close to the normal distribution but a little bit 
 right-skewed.
 
-```{r echo=FALSE, fig.width=5, fig.height=4,Univariate_Plots11}
+```{r echo=FALSE, warning=FALSE, fig.width=5, fig.height=4,Univariate_Plots11}
 # histogram for `pH`
 ggplot(data = df_wine, aes(x = pH)) + 
     geom_histogram(binwidth= 0.03, boundary = 0.015) +
@@ -410,7 +415,7 @@ summary(df_wine$pH)
 In this plot, all the observations are used. 
 The distribution is close to the normal distribution. 
 
-```{r echo=FALSE, fig.width=5, fig.height=4, Univariate_Plots12}
+```{r echo=FALSE, warning=FALSE, fig.width=5, fig.height=4, Univariate_Plots12}
 # histogram for `sulphates`
 ggplot(data = df_wine, aes(x = sulphates)) + 
     geom_histogram(binwidth= 0.02, boundary = 0.01) +
@@ -425,7 +430,7 @@ summary(df_wine$sulphates)
 In this plot, all the observations are used.  The distribution is close 
 to the normal distribution but a little bit right-skewed.
 
-```{r echo=FALSE, fig.width=5, fig.height=4, Univariate_Plots14}
+```{r echo=FALSE, warning=FALSE, fig.width=5, fig.height=4, Univariate_Plots14}
 # histogram for `alcohol`
 ggplot(data = df_wine, aes(x = alcohol)) + 
      geom_histogram(binwidth= 0.2, boundary = 0.1) +
@@ -503,7 +508,7 @@ In this part, we provide some bivariate plots.
 Before looking into the details, let us start 
 with a matrix plot of the dataset:
 
-```{r echo=FALSE, message=FALSE, fig.width=10, fig.height=10, Bivariate_Plots1}
+```{r echo=FALSE, warning=FALSE, message=FALSE, fig.width=10, fig.height=10, Bivariate_Plots1}
 # matrix plot of the data
 ggpairs(df_wine,
         lower = list(continuous = wrap("points", shape = I('.'))),
@@ -514,7 +519,7 @@ We also summarize the correlations between `quality` and
 the numerical features
 (we note that here `quality` must be treated as an integer, not a factor):
 
-```{r echo=FALSE, fig.width=10, fig.height=12, Bivariate_PlotsCor}
+```{r echo=FALSE, warning=FALSE, fig.width=10, fig.height=12, Bivariate_PlotsCor}
 # convert type of `quality` to integer temporarily
 df_wine$quality <- as.integer(as.character(df_wine$quality))
 
@@ -545,7 +550,7 @@ As a next step, by taking into account the result of the matrix plot
 and correlations, we now look at the bivariate plots 
 with high correlations more in detail.
 
-```{r echo=FALSE, fig.width=10, fig.height=4, Bivariate_Plots2}
+```{r echo=FALSE, warning=FALSE, fig.width=10, fig.height=4, Bivariate_Plots2}
 # scatter plot for residual.sugar vs density
 p1 <- ggplot(data = df_wine, 
             aes(x = residual.sugar, y = density)) + 
@@ -576,7 +581,7 @@ density. This seems to be similar to sugar water which has higher density
 than water itself. 
 
 
-```{r echo=FALSE, fig.width=10, fig.height=4, Bivariate_Plots3}
+```{r echo=FALSE, warning=FALSE, fig.width=10, fig.height=4, Bivariate_Plots3}
 # scatter plot for density vs alcohol
 p1 <- ggplot(data = df_wine, 
             aes(x = density, y = alcohol)) + 
@@ -606,7 +611,7 @@ https://en.wikipedia.org/wiki/Water_(data_page) )
 for densities of alcohol and water.)
 
 
-```{r echo=FALSE, fig.width=10, fig.height=4, Bivariate_Plots4}
+```{r echo=FALSE, warning=FALSE, fig.width=10, fig.height=4, Bivariate_Plots4}
 # scatter plot for free sulfur dioxide vs total sulfur dioxide
 p1 <- ggplot(data = df_wine, 
                 aes(x = free.sulfur.dioxide, y = total.sulfur.dioxide)) + 
@@ -638,7 +643,7 @@ high correlations with `quality` and make boxplots and density plot for them.
 We plot the observations with different value in `quality` 
 (or `quality3`) separately. 
 
-```{r echo=FALSE, fig.width=5, fig.height=4, Bivariate_Plots5}
+```{r echo=FALSE, warning=FALSE, fig.width=5, fig.height=4, Bivariate_Plots5}
 # boxplot for alcohol 
 # (observations with different `quality` plotted separately)
 ggplot(data = df_wine, aes(x = quality, y = alcohol, fill = quality)) + 
@@ -649,7 +654,7 @@ ggplot(data = df_wine, aes(x = quality, y = alcohol, fill = quality)) +
 
 ```
 
-```{r echo=FALSE, fig.width=10, fig.height=4, Bivariate_Plots5_1}
+```{r echo=FALSE, warning=FALSE, fig.width=10, fig.height=4, Bivariate_Plots5_1}
 # boxplot for `alcohol` 
 # (observations with different `quality3` plotted separately)
 p1 <- ggplot(data = df_wine, 
@@ -684,7 +689,7 @@ through the bottom-left and bottom-right plot
 in which `quality3` is used instead of the original feature `quality` 
 to classify the observations.   
 
-```{r echo=FALSE, fig.width=10, fig.height=4, Bivariate_Plots6}
+```{r echo=FALSE, warning=FALSE, fig.width=10, fig.height=4, Bivariate_Plots6}
 # boxplot for `density`
 # (observations with different `quality` plotted separately)
 p1 <- ggplot(data = df_wine, aes(x = quality, y = density, fill = quality)) + 
@@ -706,7 +711,7 @@ grid.arrange(p1,p2, ncol=2)
 
 ```
 
-```{r echo=FALSE, fig.width=10, fig.height=4, Bivariate_Plots6_1}
+```{r echo=FALSE, warning=FALSE, fig.width=10, fig.height=4, Bivariate_Plots6_1}
 # boxplot for `density` (outliers removed)
 # (observations with different `quality` plotted separately)
 p1 <- ggplot(data = subset(df_wine, density <= 1.005), 
@@ -739,7 +744,7 @@ when plotting the top-right, bottom-left and bottom-right plots.
 These plots, especially the two bottom plots indicate that 
 the white wines with higher quality have smaller density. 
 
-```{r echo=FALSE, fig.width=10, fig.height=4, Bivariate_Plots7}
+```{r echo=FALSE, warning=FALSE, fig.width=10, fig.height=4, Bivariate_Plots7}
 # boxplot for `chlorides`
 # (observations with different `quality` plotted separately)
 p1 <- ggplot(data = df_wine, 
@@ -763,7 +768,7 @@ grid.arrange(p1,p2, ncol=2)
 
 ```
 
-```{r echo=FALSE, fig.width=10, fig.height=4, Bivariate_Plots7_1}
+```{r echo=FALSE, warning=FALSE, fig.width=10, fig.height=4, Bivariate_Plots7_1}
 # boxplot for chlorides (outliers removed)
 # (observations with different `quality3` plotted separately)
 p1 <- ggplot(data = subset(df_wine, chlorides <= 0.08), 
@@ -795,7 +800,7 @@ tapply(df_wine$chlorides, df_wine$quality3, summary)
 These plots imply that there is a tendency 
 that the white wines with higher quality contain less chlorides. 
 
-```{r echo=FALSE, fig.width=10, fig.height=4, Bivariate_Plots8}
+```{r echo=FALSE, warning=FALSE, fig.width=10, fig.height=4, Bivariate_Plots8}
 # boxplot for `volatile.acidity`
 # (observations with different `quality` plotted separately)
 p1 <- ggplot(data = df_wine, 
@@ -820,7 +825,7 @@ grid.arrange(p1,p2, ncol=2)
 
 ```
 
-```{r echo=FALSE, fig.width=10, fig.height=4, Bivariate_Plots8_1}
+```{r echo=FALSE, warning=FALSE, fig.width=10, fig.height=4, Bivariate_Plots8_1}
 # boxplot for `volatile.acidity` (outliers removed)
 # (observations with different `quality3` plotted separately)
 p1 <- ggplot(data = subset(df_wine, volatile.acidity <= 0.7), 
@@ -900,7 +905,7 @@ their quality.
 Taking into account the analysis we did in the previous parts, 
 here we create some multivariate plots. 
 
-```{r echo=FALSE, fig.width=5, fig.height=4, Multivariate_Plots1}
+```{r echo=FALSE, warning=FALSE, fig.width=5, fig.height=4, Multivariate_Plots1}
 # scattering plot of `residual.sugar` vs `density` 
 # outlier removed and colored by `quality` 
 ggplot(data = subset(df_wine, residual.sugar <= 25), 
@@ -913,7 +918,7 @@ ggplot(data = subset(df_wine, residual.sugar <= 25),
 
 ``` 
 
-```{r echo=FALSE, fig.width=10, fig.height=4, Multivariate_Plots2}
+```{r echo=FALSE, warning=FALSE, fig.width=10, fig.height=4, Multivariate_Plots2}
 # scattering plot of `residual.sugar` vs `density` 
 # outlier removed and colored by `quality3` 
 p1 <- ggplot(data = subset(df_wine, residual.sugar <= 25), 
@@ -953,7 +958,7 @@ for the wines with mid quality.  It is hard to see any specific tendency
 compared to high/low quality wines.)
 
 
-```{r echo=FALSE, fig.width=5, fig.height=4, Multivariate_Plots3}
+```{r echo=FALSE, warning=FALSE, fig.width=5, fig.height=4, Multivariate_Plots3}
 # scattering plot of `density` vs `alcohol` 
 # outlier removed and colored by `quality` 
 ggplot(data = subset(df_wine, density <= 1.005), 
@@ -965,7 +970,7 @@ ggplot(data = subset(df_wine, density <= 1.005),
     guides(fill=guide_legend(title="quality"))
 ```
 
-```{r echo=FALSE, fig.width=10, fig.height=4, Multivariate_Plots4}
+```{r echo=FALSE, warning=FALSE, fig.width=10, fig.height=4, Multivariate_Plots4}
 # scattering plot of `density` vs `alcohol` 
 # outlier removed and colored by `quality3` 
 p1 <- ggplot(data = subset(df_wine, density <= 1.005), 
@@ -1010,7 +1015,7 @@ as confounders and carry out the linear regression
 (since `density` has a high correlation with `residual.sugar` 
 we did not add it as a confounder):
 
-```{r echo=FALSE, Multivariate_Plots_lm1}
+```{r echo=FALSE, warning=FALSE, Multivariate_Plots_lm1}
 set.seed(123)
 # fitting data by linear regression
 model1 <- lm(as.integer(as.character(quality)) 
@@ -1028,7 +1033,7 @@ by using AIC (Akaike Information Criterion). (For the detail of AIC,
 see, for example, [Wikipedia:AIC](
 https://en.wikipedia.org/wiki/Akaike_information_criterion )):
 
-```{r echo=FALSE, Multivariate_Plots_lm2}
+```{r echo=FALSE, warning=FALSE, Multivariate_Plots_lm2}
 set.seed(321)
 
 # convert type of `quality` to integer temporarily
@@ -1105,7 +1110,7 @@ and give some summaries of our findings from these plots.
 
 ###5.1. Plot One
 
-```{r echo=FALSE, fig.width=10, fig.height=4, Plot_One}
+```{r echo=FALSE, warning=FALSE, fig.width=10, fig.height=4, Plot_One}
 # histogram for `residual.sugar` with all the observations, log10 scaled
 p1 <- ggplot(data = df_wine, aes(x = residual.sugar)) + 
         geom_histogram(binwidth= 0.05, boundary = 0.025) +
@@ -1135,7 +1140,7 @@ and `alcohol` further by using bivariate and multivariate plots.
 
 ###5.3. Plot Two
 
-```{r echo=FALSE, fig.width=10, fig.height=4, Plot_Two}
+```{r echo=FALSE, warning=FALSE, fig.width=10, fig.height=4, Plot_Two}
 # boxplot for `alcohol` 
 # (observations with different `quality3` plotted separately)
 p1 <- ggplot(data = df_wine, 
@@ -1175,7 +1180,7 @@ increases as well as (2) the usefulness of the classification of
 the observations based on `quality3`.  
 
 ###5.5. Plot Three
-```{r echo=FALSE, fig.width=10, fig.height=4, Plot_Three}
+```{r echo=FALSE, warning=FALSE, fig.width=10, fig.height=4, Plot_Three}
 # scattering plot of `residual.sugar` vs `density` 
 # outlier removed and colored by `quality3` 
 p1 <- ggplot(data = subset(df_wine, residual.sugar <= 25), 
