@@ -1,0 +1,19 @@
+references: 
+
+1. 
+The original dataset was downloaded from the website given by Udacity:
+https://www.google.com/url?q=https://s3.amazonaws.com/udacity-hosted-downloads/ud651/wineQualityWhites.csv&sa=D&ust=1508195337108000&usg=AFQjCNH_OofqZo2VFffE37Me8XV9znyFQQ
+
+2. 
+The journal website for the paper by Cortez et. al. which gives some explanation of the dataset:
+http://www.sciencedirect.com/science/article/pii/S0167923609001377
+
+3. 
+some scientific data of alcohol and water in Wikipedia: 
+https://en.wikipedia.org/wiki/Ethanol_(data_page)
+https://en.wikipedia.org/wiki/Water_(data_page)
+
+4. 
+Wikipedia website for AIC
+https://en.wikipedia.org/wiki/Akaike_information_criterion
+
